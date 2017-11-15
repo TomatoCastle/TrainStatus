@@ -14,6 +14,7 @@ class GetStatus:
         contents = self.soup.find('div', id="mdServiceStatus")
         onTime = self.isOnTime(contents)
         result['status'] = contents.find('p').text
+        result['isOntime'] = onTime
         result['lineName'] = self.getLineTitle(contents)
         return result
 
