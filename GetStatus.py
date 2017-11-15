@@ -12,7 +12,7 @@ class GetStatus:
     def connectWebToGetStatus(self):
         result = {}
         contents = self.soup.find('div', id="mdServiceStatus")
-        onTime = self.checkOnTime(contents)
+        onTime = self.isOnTime(contents)
         result['status'] = contents.find('p').text
         result['lineName'] = self.getLineTitle(contents)
         return result
