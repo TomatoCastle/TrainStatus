@@ -14,11 +14,12 @@ class GetStatus:
         contents = self.soup.find('div', id="mdServiceStatus")
         onTime = self.isOnTime(contents)
         result['status'] = contents.find('p').text
+        result['isOntime'] = onTime
         result['lineName'] = self.getLineTitle(contents)
         return result
 
     def isOnTime(self,contents):
-        if len(contents.find_all('trouble')) == 0:
+        if len(contents.find_all(class_='trouble')) == 0:
             return True
         else:
             return False
