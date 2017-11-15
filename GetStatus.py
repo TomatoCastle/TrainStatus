@@ -19,7 +19,7 @@ class GetStatus:
         return result
 
     def isOnTime(self,contents):
-        if len(contents.find_all('trouble')) == 0:
+        if len(contents.find_all(class_='trouble')) == 0:
             return True
         else:
             return False
