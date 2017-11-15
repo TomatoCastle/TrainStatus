@@ -5,12 +5,12 @@ class GetStatus:
         html_text = open(uri,'r')
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
 
-    def getInfo(self):
-        return self.getBody()
+    def getStatus(self):
+        return self.connectWebToGetStatus()
 
-    def getBody(self):
-        pass
-        #todo
+    def connectWebToGetStatus(self):
+        contents = self.soup.find('div', id="mdServiceStatus")
+        print(contents.text)
 
 
 
