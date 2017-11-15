@@ -4,8 +4,8 @@ class StatusTelop:
     def __init__(self):
        self.sutasues = []
 
-    def addLine(self,url):
-        pass
+    def addLine(self,uri):
+        self.sutasues.append(gs.GetStatus(uri))
 
     def __str__(self):
         pass
