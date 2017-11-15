@@ -10,10 +10,12 @@ class GetStatus:
         return self.connectWebToGetStatus()
 
     def connectWebToGetStatus(self):
+        result = {}
         contents = self.soup.find('div', id="mdServiceStatus")
         onTime = self.checkOnTime(contents)
-        nowStatus = contents.find('p').text
-        print(nowStatus)
+        result['status'] = contents.find('p').text
+        result['lineName'] = self.getLineTitle(contents)
+        return result
 
     def isOnTime(self,contents):
         if len(contents.find_all('trouble')) == 0:
@@ -22,7 +24,8 @@ class GetStatus:
             return False
 
     def getLineTitle(self, contents):
-        pass #todo
+        return None
+        #todo
 
     def update(self):
         html_text = open(self.uri,'r')
