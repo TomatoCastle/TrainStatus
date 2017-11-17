@@ -8,5 +8,9 @@ class StatusTelop:
         self.sutasues.append(gs.GetStatus(uri))
 
     def __str__(self):
-         str = ""
+        str = ""
+        for i in self.sutasues:
+            sutatsu = i.getTrainStatus()
+            str = '【' + sutatsu['lineName'] + '】 ' + sutatsu + "   "
+        return str
 

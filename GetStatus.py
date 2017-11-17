@@ -5,17 +5,17 @@ class GetStatus:
         self.uri = uri
         html_text = open(uri,'r')
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
+        self.__result = {}
 
     def getTrainStatus(self):
         return self.connectWebToGetStatus()
 
     def connectWebToGetStatus(self):
-        result = {}
         contents = self.soup.find('div', id='mdServiceStatus')
-        result['status'] = contents.find('p').text
-        result['isOntime'] = self.isOnTime(contents)
-        result['lineName'] = self.getLineTitle()
-        return result
+        self.__result['status'] = contents.find('p').text
+        self.__result['isOntime'] = self.isOnTime(contents)
+        self.__result['lineName'] = self.getLineTitle()
+        return self.__result
 
     def isOnTime(self,contents):
         if len(contents.find_all(class_='trouble')) == 0:
@@ -29,4 +29,8 @@ class GetStatus:
     def update(self):
         html_text = open(self.uri,'r')
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
+
+    def __str__(self):
+        return str(self.__result)
+
 
