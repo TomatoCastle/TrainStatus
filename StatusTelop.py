@@ -8,5 +8,5 @@ class StatusTelop:
         self.sutasues.append(gs.GetStatus(uri))
 
     def __str__(self):
-        pass
+         str = ""
 
