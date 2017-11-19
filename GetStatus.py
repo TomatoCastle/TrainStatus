@@ -1,9 +1,11 @@
 from bs4 import BeautifulSoup
+import requests
 
 class GetStatus:
     def __init__(self,uri):
         self.uri = uri
         html_text = open(uri,'r')
+        #html_text ~ requests.get(uri)
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
         self.__result = {}
 
