@@ -11,6 +11,6 @@ class StatusTelop:
         str = ""
         for i in self.sutasues:
             sutatsu = i.getTrainStatus()
-            str = '【' + sutatsu['lineName'] + '】 ' + sutatsu['status'] + "   "
+            str += '【' + sutatsu['lineName'] + '】 ' + sutatsu['status'] + "   "
         return str
 
