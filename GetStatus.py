@@ -12,9 +12,9 @@ class GetStatus:
 
     def connectWebToGetStatus(self):
         contents = self.soup.find('div', id='mdServiceStatus')
-        self.__result['status'] = contents.find('p').text
-        self.__result['isOntime'] = self.isOnTime(contents)
-        self.__result['lineName'] = self.getLineTitle()
+        self.__result['status'] = str(contents.find('p').text)
+        self.__result['isOntime'] = str(self.isOnTime(contents))
+        self.__result['lineName'] = str(self.getLineTitle())
         return self.__result
 
     def isOnTime(self,contents):
@@ -24,7 +24,7 @@ class GetStatus:
             return False
 
     def getLineTitle(self):
-        return self.soup.find(class_='title')
+        return self.soup.find(class_='title').text
 
     def update(self):
         html_text = open(self.uri,'r')
