@@ -3,6 +3,7 @@ import requests
 
 class GetStatus:
     def __init__(self,uri):
+        self.checkTypeUri(uri)
         self.uri = uri
         html_text = open(uri,'r')
         #html_text ~ requests.get(uri)
@@ -34,5 +35,9 @@ class GetStatus:
 
     def __str__(self):
         return str(self.__result)
+
+    def checkTypeUri(self,uri):
+        if not isinstance(uri,str):
+            raise TypeError('\"uri\"\'s type must be \"str\"')
 
 
