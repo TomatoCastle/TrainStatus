@@ -6,7 +6,7 @@ class GetStatus:
         self.checkTypeUri(uri)
         self.uri = uri
         html_text = open(uri,'r')
-        #html_text ~ requests.get(uri)
+        #html_text = requests.get(uri)
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
         self.__result = {}
 
