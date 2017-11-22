@@ -27,7 +27,7 @@ class GetStatus:
             return False
 
     def getLineTitle(self):
-        return self.soup.find(class_='title').text
+        return self.soup.find('h1',class_='title').text
 
     def update(self):
         html_text = open(self.uri,'r')
