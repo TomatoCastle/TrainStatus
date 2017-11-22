@@ -8,6 +8,7 @@ class GetStatus:
         html_text = open(uri,'r')
         #html_text = requests.get(uri)
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
+        #self.soup = BeautifulSoup(html_text.text, 'html.parser')
         self.__result = {}
 
     def getTrainStatus(self):
