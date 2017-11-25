@@ -5,13 +5,14 @@ class GetStatus:
     def __init__(self,uri):
         self.checkTypeUri(uri)
         self.uri = uri
-        html_text = open(uri,'r')
+        #html_text = open(uri,'r')
         #html_text = requests.get(uri)
-        self.soup = BeautifulSoup(html_text.read(),'html.parser')
+        #self.soup = BeautifulSoup(html_text.read(),'html.parser')
         #self.soup = BeautifulSoup(html_text.text, 'html.parser')
         self.__result = {}
 
     def getTrainStatus(self):
+        self.update()
         return self.connectWebToGetStatus()
 
     def connectWebToGetStatus(self):
@@ -32,7 +33,9 @@ class GetStatus:
 
     def update(self):
         html_text = open(self.uri,'r')
+        # html_text = requests.get(uri)
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
+        # self.soup = BeautifulSoup(html_text.text, 'html.parser')
 
     def __str__(self):
         return str(self.__result)
