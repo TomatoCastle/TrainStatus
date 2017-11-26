@@ -18,3 +18,6 @@ class StatusTelop:
     def checkTypeUri(self,uri):
         if not isinstance(uri,str):
             raise TypeError('\"uri\"\'s type must be \"str\"')
+
+    def __eq__(self, other):
+        return other.sutasues == self.sutasues

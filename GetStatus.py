@@ -5,14 +5,14 @@ class GetStatus:
     def __init__(self,uri):
         self.checkTypeUri(uri)
         self.uri = uri
-        #html_text = open(uri,'r')
+        html_text = open(uri,'r')
         #html_text = requests.get(uri)
-        #self.soup = BeautifulSoup(html_text.read(),'html.parser')
+        self.soup = BeautifulSoup(html_text.read(),'html.parser')
         #self.soup = BeautifulSoup(html_text.text, 'html.parser')
         self.__result = {}
 
     def getTrainStatus(self):
-        self.update()
+        #self.update()
         return self.connectWebToGetStatus()
 
     def connectWebToGetStatus(self):
@@ -33,9 +33,9 @@ class GetStatus:
 
     def update(self):
         html_text = open(self.uri,'r')
-        # html_text = requests.get(uri)
+        #html_text = requests.get(self.uri)
         self.soup = BeautifulSoup(html_text.read(),'html.parser')
-        # self.soup = BeautifulSoup(html_text.text, 'html.parser')
+        #self.soup = BeautifulSoup(html_text.text, 'html.parser')
 
     def __str__(self):
         return str(self.__result)
@@ -44,4 +44,8 @@ class GetStatus:
         if not isinstance(uri,str):
             raise TypeError('\"uri\"\'s type must be \"str\"')
 
+    def __eq__(self, other):
+        other_result = other.getTrainStatus()
+        this_result = self.getLineTitle()
+        return other_result == this_result
 
