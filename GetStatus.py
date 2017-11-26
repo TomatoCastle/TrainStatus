@@ -46,6 +46,6 @@ class GetStatus:
 
     def __eq__(self, other):
         other_result = other.getTrainStatus()
-        this_result = self.getLineTitle()
+        this_result = self.getTrainStatus()
         return other_result == this_result
 
