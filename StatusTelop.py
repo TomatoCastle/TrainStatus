@@ -21,3 +21,6 @@ class StatusTelop:
 
     def __eq__(self, other):
         return other.sutasues == self.sutasues
+
+    def __getitem__(self, key):
+        return self.sutasues[key].getTrainStatus()
